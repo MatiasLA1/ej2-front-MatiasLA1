@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #fff;
+    
+}
+body,div,ul,nav,header,footer,a,li,label{
+    margin: 0;
+    padding: 0;
+}

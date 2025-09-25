@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/style.css', _external=True)}}">
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo-container">
+            <img class="header__logo" src="" alt="Logo">
+        </div>
+        <nav class="header__nav">
+            <ul>
+                <li><a href="">Inicio</a></li>
+                <li><a href="">Informacion</a></li>
+                <li><a href="">Recorrido</a></li>
+                <li><a href="">Auspiciantes</a></li>
+                <li><a href="">Inscripcion</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% block body %} 
+
+    {% endblock %}
+    <footer class="footer" id="contacto">
+    <div class="footer__info">
+        <p>© 2025 Club Social y Deportivo Unidos por el Deporte</p>
+        <p>Organizador del Rally MTB Tandil 2025</p>
+    </div>
+
+    <div class="footer__contacto">
+        <p>WhatsApp: <a href="https://wa.me/5491112345678">+54 9 11 1234 5678</a></p>
+        <p>Email: <a href="mailto:clubunidos@gmail.com">clubunidos@gmail.com</a></p>
+    </div>
+
+    <div class="footer__links">
+        <a href="{{ url_for('static', filename='docs/reglamento.pdf') }}" target="_blank">Reglamento</a> |
+        <a href="{{ url_for('static', filename='docs/deslinde.pdf') }}" target="_blank">Deslinde</a>
+    </div>
+</footer>
+    <!-- <script src="{{url_for('static', filename='js/script.js')}}"></script> -->
+</body>
+</html>
