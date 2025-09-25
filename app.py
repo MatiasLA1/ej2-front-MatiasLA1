@@ -18,11 +18,15 @@ info_evento = {
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',organizador=info_evento[1]["organizador"],nombre_evento=info_evento[1]["nombre"])
 
 @app.route('/base')
 def base():
     return render_template('base.html',organizador=info_evento[1]["organizador"],nombre_evento=info_evento[1]["nombre"])
+
+@app.route('/registration')
+def registration():
+    return render_template('registration.html')
 
 if __name__ == '__main__':
     app.run("localhost",port=5001,debug=True)
