@@ -6,9 +6,12 @@ body{
     margin: 0;
     font-family: sans-serif;
     background-color: #eee;
+    --color_logo-amarillo: #fdb900;
+    --color_logo-celeste: #0083ff;
+
     
 }
-body,div,ul,nav,header,footer,a,li,label{
+body,div,ul,nav,header,footer,main,section,a,li,label,h1,h2,h3,h4{
     margin: 0;
     padding: 0;
 }
@@ -88,7 +91,7 @@ body,div,ul,nav,header,footer,a,li,label{
     flex-direction: column;
     justify-content: center;
     position: relative;
-    bottom: 50px;
+    bottom: 90px;
     right: 30px;
     max-width: 100px;
 }
@@ -96,3 +99,95 @@ body,div,ul,nav,header,footer,a,li,label{
 
 
 /* FOOTER END ------------------------------------ */
+
+
+
+/* REGISTRATION SECTION --------------------------------*/
+.registration__title{
+    background: #222;
+    padding: 16px 24px;
+    color: #fff;
+    text-align: center;
+
+}
+.registration{
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 12px 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.registration__form{
+    display: flex;
+    max-width: 500px ;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: start;
+    align-self: center;
+}
+
+.form__item{
+    font-size: 20px;
+    margin: 12px 0;
+}
+.form__input{
+    font-size: 16px;
+    padding: 10px 6px;
+    max-width: 70%;
+    border-radius: 14px;
+    border: none;
+}
+
+.foto_cupos-container{
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+.foto_cupos{
+    max-width: 300px;
+    max-height: 400px;
+}
+
+
+.form__button{
+    margin: 22px;
+    padding: 20px 30px;
+    border-radius: 20px;
+    border: none;
+    font-size: 18px;
+    max-width: 1000px;
+    align-self: center;
+    font-weight: bold;
+    transition: background-color 0.4s;
+    background-color: var(--color_logo-celeste);
+    color: #fff;;
+    }
+.form__button:hover{
+    background-color: #0066cc;
+}
+
+.fotos_eventos-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 23px 8px;
+    background: linear-gradient(to top,#000, #333);
+}
+.fotos_eventos-1{
+    max-width: 95%;
+    align-self: center;
+    margin: 30px 0 ;
+}
+.fotos_eventos-2{
+    max-width: 95%;
+    align-self: center;
+    margin: 30px 0;
+    margin-top: 0;
+}
+.fotos_eventos-title{
+    color: #fff;
+    text-align: center;
+    margin: 0;
+}

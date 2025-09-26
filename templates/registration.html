@@ -3,11 +3,50 @@
 {% block title %}Inscripción - Rally MTB Tandil 2025{% endblock %}
 
 {% block body %}
+<h1 class="registration__title">Formulario de Inscripción</h1>
 <section class="registration">
-    <h1 class="registration__title">Formulario de Inscripción</h1>
-    <form action="">
-        <label for="">Nombre del participante</label>
-        <input type="text" placeholder="Nombre">
+    <form action="" class="registration__form">
+        <!-- DATOS PERSONALES -->
+        <label class="form__item" for="name">Nombre:</label>
+        <input class="form__input" type="text" id="firstname" name="fname" placeholder="John">
+
+        <label class="form__item" for="lastname">Apellido:</label>
+        <input class="form__input" type="text" id="lastname" name="lname" placeholder="Doe">
+        <!-- DATOS DE CONTACTO -->
+        <label class="form__item" for="email">Email:</label>
+        <input class="form__input" type="email" name="email" id="email" placeholder="ejemplo@ejemplo.com">
+
+        <label class="form__item" for="telefono">Teléfono / Celular:</label>
+        <input class="form__input" type="tel" name="telefono" id="telefono" placeholder="+54 9 11 1234 5678">
+
+        <label class="form__item" for="ciudad">Ciudad / Provincia:</label>
+        <input class="form__input" type="text" name="ciudad" id="ciudad" placeholder="Buenos Aires">
+
+        <!-- INFORMACION DE LA CARRERA -->
+
+        <label class="form__item">Selección de modalidad de la carrera:
+        </label>
+        <select class="form__input" name="modalidad_carrera" id="modalidad_carrera">
+            <option value="corta">Corta</option>
+            <option value="larga">Larga</option>
+        </select>
+
+        <label class="form__item" for="telefono">Número de emergencia:</label>
+        <input class="form__input" type="tel" name="telefono_emergencia" id="telefono_emergencia" placeholder="+54 9 11 9876 5432">
+
+        <button class="form__button" type="submit">Enviar inscripción ➡</button>
     </form>
+    <div class="foto_cupos-container">
+    <img class="foto_cupos" 
+    src="{{url_for('static',filename='images/imagen_50_cupos.jpg')}}" alt="Foto del evento sobre que queda 50 cupos">
+    </div>
 </section>
+
+
+<div class="fotos_eventos-container">
+    <h2 class="fotos_eventos-title">Fotos del evento</h2>
+    <img class="fotos_eventos-1" src="{{url_for('static',filename='images/foto_evento_1.jpeg',_external=true)}}" alt="">
+    <img class="fotos_eventos-2" src="{{url_for('static',filename='images/foto_evento_2.jpg',_external=true)}}" alt="">
+</div>
+
 {% endblock %}

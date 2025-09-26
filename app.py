@@ -10,7 +10,8 @@ info_evento = {
     "horario": "8am",
     "lugar": "Tandil, Buenos Aires",
     "tipo_carrera": "MTB rural",
-    "modalidad_costo": {1: {"nombre": "Corta" ,"valor": "100"},
+    "modalidad_costo": {
+    1: {"nombre": "Corta" ,"valor": "100"},
     2: {"nombre": "Larga" ,"valor": "200"}},
     "Auspiciantes": ["ausp1","auspN"]
     }
@@ -26,7 +27,8 @@ def base():
 
 @app.route('/registration')
 def registration():
-    return render_template('registration.html')
+    return render_template('registration.html',
+    organizador=info_evento[1]["organizador"],nombre_evento=info_evento[1]["nombre"])
 
 if __name__ == '__main__':
     app.run("localhost",port=5001,debug=True)
