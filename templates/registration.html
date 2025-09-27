@@ -24,7 +24,7 @@
 
         <!-- INFORMACION DE LA CARRERA -->
 
-        <label class="form__item">Selección de modalidad de la carrera:
+        <label class="form__item">Modalidad de la carrera:
         </label>
         <select class="form__input" name="modalidad_carrera" id="modalidad_carrera">
             <option value="corta">Corta</option>
@@ -45,8 +45,10 @@
 
 <div class="fotos_eventos-container">
     <h2 class="fotos_eventos-title">Fotos del evento</h2>
-    <img class="fotos_eventos-1" src="{{url_for('static',filename='images/foto_evento_1.jpeg',_external=true)}}" alt="">
-    <img class="fotos_eventos-2" src="{{url_for('static',filename='images/foto_evento_2.jpg',_external=true)}}" alt="">
+    <div class="fotos_eventos-images">
+        <img class="fotos_eventos-1" src="{{ url_for('static', filename='images/foto_evento_1.jpeg') }}" alt="">
+        <img class="fotos_eventos-2" src="{{ url_for('static', filename='images/foto_evento_2.jpg') }}" alt="">
+    </div>
 </div>
 
 {% endblock %}
