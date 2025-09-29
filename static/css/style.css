@@ -20,7 +20,8 @@ body,div,ul,nav,header,footer,main,section,a,li,label,h1,h2,h3,h4{
 .header{
     background-color: #035;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    padding: 16px 0;
 }
 .header__nav{
     display: flex;
@@ -47,11 +48,34 @@ body,div,ul,nav,header,footer,main,section,a,li,label,h1,h2,h3,h4{
     gap: 10px;
 }
 .header__nav-item a{
-    color: #fff;
+    color: #eee;
     text-decoration: none;
     padding: 8px 12px;
     font-weight: bold;
+    display: none;
 }
+.header__nav-item--registration a{
+    display: block;
+    color: #111;
+    background-color: var(--color_logo-amarillo);
+    border-radius: 16px;
+    padding: 12px 18px;
+    justify-self: center;
+    position: absolute;
+    top: 30px;
+    transition: all 0.7s;
+}
+.header__nav-item a:hover{
+    opacity: 80%;
+}
+
+.header__nav-item--registration a:hover{
+    opacity: 80%;
+    padding: 20px 32px;
+}
+
+
+
 
 /* HEADER QUERIES ------------------------------------ */
 @media screen and (min-width:760px) {
@@ -64,6 +88,14 @@ body,div,ul,nav,header,footer,main,section,a,li,label,h1,h2,h3,h4{
         flex-direction: row;
         align-items: center;
     }
+    .header__nav-item a{
+        display: initial;
+    }
+    .header__nav-item--registration a{
+        display: initial;
+        position: relative;
+        top: 0;
+    }
 }
 
 /* HEADER ENDS ------------------------------------ */
@@ -74,37 +106,30 @@ body,div,ul,nav,header,footer,main,section,a,li,label,h1,h2,h3,h4{
 .footer{
     padding: 6px 20px;
     background-color: #141414;
-    color: #fff;
     padding-bottom: 0;
 }
-.footer__contacto p {
-    color: #999;
-}
-.footer__contacto a{
-    color: #fff;
-    text-decoration: none;
-}
 
-.footer__links a{
-    text-decoration: none;
-    color: #4af;
-}
-.footer__links{
+.footer__container{
+    max-width: 1280px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
-.footer__links-container{
-    align-items: center;
+.footer__info a{
+    color: #eee;
+    text-decoration: none;
 }
+.footer__info-paragraph{
+    color: #eee;
+}
+.footer__info-contact{
+    color: #999;
+}
+
 .footer__logo-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
-    bottom: 90px;
-    right: 30px;
-    max-width: 100px;
 }
 /* FOOTER QUERIES ------------------------------------ */
 
@@ -118,13 +143,12 @@ body,div,ul,nav,header,footer,main,section,a,li,label,h1,h2,h3,h4{
     background: #222;
     padding: 0 24px;
     padding-top: 16px;
-    color: #fff;
+    color: #eee;
     text-align: center;
 
 }
 .registration{
     background: #222;
-    color: #fff;
     text-align: center;
     padding: 12px 24px;
     padding-top: 0;
@@ -145,6 +169,7 @@ body,div,ul,nav,header,footer,main,section,a,li,label,h1,h2,h3,h4{
 .form__item{
     font-size: 20px;
     margin: 12px 0;
+    color: #eee;
 }
 .form__input{
     font-size: 16px;
@@ -152,6 +177,7 @@ body,div,ul,nav,header,footer,main,section,a,li,label,h1,h2,h3,h4{
     max-width: 90%;
     border-radius: 14px;
     border: none;
+    background-color: #ddd;
 }
 
 .foto_cupos-container{
@@ -176,43 +202,47 @@ body,div,ul,nav,header,footer,main,section,a,li,label,h1,h2,h3,h4{
     font-weight: bold;
     transition: background-color 0.4s;
     background-color: var(--color_logo-celeste);
-    color: #fff;;
+    color: #ddd;
     }
 .form__button:hover{
     background-color: #0066cc;
 }
 
-.fotos_eventos-container{
-    background: linear-gradient(to top,#000, #333);
+.fotos_evento-container{
+    background: linear-gradient(to top, #222, #111);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     padding: 23px 8px;
     padding-bottom: 0;
 }
-.fotos_eventos-1{
+.fotos_evento{
     max-width: 95%;
     align-self: center;
     margin: 30px 0 ;
 }
-.fotos_eventos-2{
-    max-width: 95%;
-    align-self: center;
-    margin: 30px 0;
+.fotos_evento-2{
     margin-top: 0;
 }
-.fotos_eventos-title{
-    color: #fff;
+.fotos_evento-title{
+    color: #eee;
     text-align: center;
     margin: 0;
 }
-.fotos_eventos-images{
+.fotos_evento-images{
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 /* REGISTRATION QUERIES --------------------------------*/
+@media screen and (min-width:200px) and (max-width:400px){
+    .registration__form{
+    max-width: 260px;
+    min-width: 260px;
+    }
+}
+
 @media screen and (min-width:600px){
     .registration__form{
         max-width:auto ;
@@ -220,10 +250,10 @@ body,div,ul,nav,header,footer,main,section,a,li,label,h1,h2,h3,h4{
     .foto_cupos-container{
         align-items: center;
     }
-    .fotos_eventos-1{
+    .fotos_evento{
         max-width: 560px;
     }
-    .fotos_eventos-2{
+    .fotos_evento-2{
         max-width: 560px;
     }
 }
@@ -252,18 +282,226 @@ body,div,ul,nav,header,footer,main,section,a,li,label,h1,h2,h3,h4{
 
 
 @media screen and (min-width:1100px){
-    .fotos_eventos-images {
+    .fotos_evento-images {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     gap: 1rem;
     }
-    .fotos_eventos-1{
+    .fotos_evento{
         max-height: 348px;
     }
-    .fotos_eventos-2{
+    .fotos_evento-2{
         margin: auto 0;
     }
 }
 
 /* REGISTRATION ENDS --------------------------------*/
+
+
+
+/* INDEX SECTION ------------------------------------ */
+
+/* PRESENTACION SECTION ----------------------------*/
+.presentacion__section{
+    background: linear-gradient(to top, #333,#222,#111);
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.presentacion__title{
+    color: var(--color_logo-celeste);
+    
+}
+.presentacion__description{
+    color: var(--color_logo-amarillo);
+}
+.presentacion__paragraph{
+    color: #eee;
+}
+/* PRESENTACION ENDS----------------------------------*/
+
+
+
+/* MAPA SECTION ----------------------------------------*/
+.mapa-recorrido__section{
+    background: linear-gradient(to bottom, #333, #111);
+    padding: 12px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.puntos-hidratacion-title{
+    padding-top: 12px;
+    color: var(--color_logo-amarillo);
+}
+.puntos-hidratacion-list{
+    /* list-style-type: none; */
+    color: #eee;
+    padding-left: 30px;
+}
+.mapa-recorrido-title{
+    padding-bottom: 16px;
+    color:#eee;
+}
+.mapa-recorrido-iframe{
+    min-width: 80dvw;
+    min-height: 450px;
+}
+.mapa-recorrido__container{
+    display: flex;
+    flex-direction: column;
+}
+
+/* MAPA ENDS ----------------------------------------*/
+
+
+/* FOTOS EVENTO SECTION ------------------------------------*/
+
+
+/* FOTOS EVENTO ENDS ------------------------------------*/
+
+
+
+
+/* KIT DE CARREAR SECTION  ------------------------------------*/
+
+.kit-de-carrera__section{
+    background: linear-gradient(to bottom, #333, #111);
+    padding: 12px 20px;
+}
+.kit-de-carrera__list{
+    color: #eee;
+    padding: 0 20px;
+}
+.kit-de-carrera__title{
+    color: var(--color_logo-amarillo);
+}
+
+/* KIT DE CARRERA ENDS ------------------------------------*/
+
+
+
+/* AUSPICIANTES SECTION ------------------------------------*/
+
+.auspiciantes__section{
+    background: linear-gradient(to top, #333, #111);
+    display: flex;
+    flex-direction: column;
+    padding: 12px 20px;
+
+}
+.auspiciantes__section h2,p{
+    color: #ddd;
+    font-weight: bold;
+}
+.auspiciante__title{
+    color: var(--color_logo-amarillo);
+}
+.auspiciantes__images-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auspiciante__images{
+    max-width: 300px;
+    margin: 12px 0;
+}
+
+/* AUSPICIANTES ENDS ------------------------------------*/
+
+/* ENLACES SECTION --------------------------*/
+.enlaces__section{
+    background: linear-gradient(to top, #333, #111);
+}
+.enlaces__list{
+    display: flex;
+    list-style-type: none;
+    padding: 32px 20px;
+    justify-content: center;
+}
+
+.enlaces__list-item a{
+    color: #eee;
+    margin: 0px 12px;
+    text-decoration: none;
+    /* background-color: #4af; */
+    background-color: var(--color_logo-celeste);
+    padding: 12px 12px;
+    border-radius: 16px;
+    transition: padding 0.7s;
+    font-weight: bold;
+}
+.enlaces__list-item a:hover{
+    padding: 20px 32px;
+}
+/* ENLACES ENDS ------------------------------*/
+
+
+
+/* INDEX QUERIES ----------------------------------- */
+@media screen and (min-width:400px){
+    .enlaces__list{
+        flex-direction: column;
+        align-items: center;
+    }
+    .enlaces__list-item{
+        margin: 18px;
+    }
+    .enlaces__list-item a{
+        text-wrap: nowrap;
+    }
+
+}
+
+@media screen and (min-width:600px){
+    .auspiciantes__section{
+        text-align: center;
+    }
+    .auspiciantes__images-container{
+        flex-direction: row;
+        justify-content: space-around;
+
+    }
+    .auspiciante__images{
+        max-width: 250px;
+    }
+    .kit-de-carrera__container{
+        margin: 0 auto;
+        max-width: 1024px;
+    }
+    .presentacion__container{
+        margin: 0 auto;
+        max-width: 1024px;
+    }
+    .enlaces__section{
+        display: flex;
+        justify-content: center;
+    }
+}
+@media screen and (min-width:900px){
+    .auspiciante__images{
+        max-width: 300px;
+    }
+    .mapa-recorrido__container{
+        flex-direction: row;
+    }
+    .mapa-recorrido-iframe{
+        min-width: 600px;
+    }
+    .puntos-hidratacion__container{
+        padding: 0 26px;
+        align-self: center;
+    }
+    .enlaces__list-item{
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .enlaces__list{
+        flex-direction: row;
+    }
+}
+
+/* INDEX ENDS -------------------------------------- */

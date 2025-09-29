@@ -1,5 +1,82 @@
 {% extends "base.html" %}
-{% block title %}Hola mundo{% endblock %}
+{% block title %}Inicio | Rally MTB Tandil 2025{% endblock %}
 {% block body %}
-<h1>hola mundo</h1>
+<main class="presentacion__section">
+    <div class="presentacion__container">
+        
+    <h1 class="presentacion__title">{{ nombre }}</h1>
+    <h2 class="presentacion__description">Domingo {{ fecha }} · {{ lugar }}</h2>
+
+    <p class="presentacion__paragraph">
+        {{ descripcion_evento }}
+        <br>
+        La carrera recorre los característicos sierras y caminos de Tandil, combinando tramos rápidos con sectores técnicos, garantizando una experiencia inolvidable para cada participante.
+        <br>
+        <br>
+        Organizado por: {{ organizador }}
+        <br>
+        Tipo de carrera: {{ tipo_carrera }}
+        <br>
+        Modalidades: Corta ($100), Larga ($200)
+    </p>
+    </div>
+</main>
+<section class="mapa-recorrido__section">
+    <h2 class="mapa-recorrido-title">Mapa del recorrido</h2>
+    <div class="mapa-recorrido__container">
+        <iframe class="mapa-recorrido-iframe" src="https://www.google.com/maps/embed?pb=!1m42!1m12!1m3!1d26773.033518759887!2d-59.13443519635493!3d-37.35586769752238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m27!3e1!4m5!1s0x95911f97114971c9%3A0xc9be92fa62930112!2sPlaza%20Independencia%2C%20Belgrano%20500%2C%20B7000%20Tandil%2C%20Provincia%20de%20Buenos%20Aires!3m2!1d-37.328708299999995!2d-59.136925299999994!4m3!3m2!1d-37.3450619!2d-59.134881!4m3!3m2!1d-37.3573744!2d-59.1253494!4m5!1s0x95911e14cd16c3dd%3A0x2a3095b7edfe4229!2sSierra%20del%20Tigre%20Natural%20Reserve%2C%20Suiza%202400%2C%20B7000%20Tandil%2C%20Provincia%20de%20Buenos%20Aires!3m2!1d-37.3721976!2d-59.127482699999995!4m5!1s0x95911f9b2733946f%3A0xceef2c76899c202d!2sTandil%2C%20Buenos%20Aires%20Province!3m2!1d-37.3287999!2d-59.136716699999994!5e0!3m2!1sen!2sar!4v1759030250254!5m2!1sen!2sar" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="puntos-hidratacion__container">
+            <h2 class="puntos-hidratacion-title">Puntos de hidratación</h2>
+            <ul class="puntos-hidratacion-list">
+                <li class="puntos-hidratacion-item">Doctor Saavedra Lamas 777-787</li>
+                <li class="puntos-hidratacion-item">Avenida Don Bosco 1575-903</li>
+                <li class="puntos-hidratacion-item">Sierra del Tigre Natural Reserve</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="fotos_evento-container">
+    <div class="fotos_evento-container_width">
+
+    <h2 class="fotos_evento-title">Fotos del evento</h2>
+    <div class="fotos_evento-images fotos_evento-images-index">
+        <img class="fotos_evento" src="{{ url_for('static', filename='images/foto_evento_4.jpg') }}" alt="">
+        <img class="fotos_evento fotos_evento-index" src="{{ url_for('static', filename='images/foto_evento_5.jpg') }}" alt="">
+    </div>
+    <div class="fotos_evento-images fotos_evento-images-index">
+        <img class="fotos_evento fotos_evento-index" src="{{ url_for('static', filename='images/foto_evento_6.jpg') }}" alt="">
+            <img class="fotos_evento fotos_evento-index" src="{{ url_for('static', filename='images/foto_evento_3.jpg') }}" alt="">
+    </div>
+    </div>
+</div>
+
+<section class="auspiciantes__section" id="auspiciantes">
+    <h2 class="auspiciantes__title">Auspiciantes</h2>
+    <p>Agradecemos a nuestros patrocinadores por hacer posible este evento:</p>
+    <div class="auspiciantes__images-container">
+        <img class="auspiciante__images auspiciante__image-1 fotos_evento" src="{{url_for('static',filename='images/auspiciante_powerade.jpg')}}" alt="Logo de Powerade">
+        <img class="auspiciante__images auspiciante__image-2 fotos_evento" src="{{url_for('static',filename='images/auspiciante_specialized.jpg')}}" alt="Logo de Specialized">
+    </div>
+</section>
+<div class="kit-de-carrera__section">
+    <div class="kit-de-carrera__container">
+    <h2 class="kit-de-carrera__title">Kit de carrera</h2>
+    <p>Cada participante recibirá un completo kit con todo lo necesario para disfrutar la carrera:</p>
+    <ul class="kit-de-carrera__list">
+        <li class="kit-de-carrera__list-item">Camiseta oficial del Rally MTB Tandil 2025</li>
+        <li class="kit-de-carrera__list-item">Número de dorsal personalizado</li>
+        <li class="kit-de-carrera__list-item">Medalla de finalista</li>
+        <li class="kit-de-carrera__list-item">Hidratación y snacks energéticos</li>
+        <li class="kit-de-carrera__list-item">Mapa del recorrido y reglamento impreso</li>
+    </ul>
+    </div>
+</div>
+<div class="enlaces__section">
+    <ul class="enlaces__list">
+        <li class="enlaces__list-item"><a target="_blank" href="{{url_for('static',filename='pdf/deslinde.pdf',_external=true)}}" >Deslinde</a></li>
+        <li class="enlaces__list-item"><a target="_blank" href="{{url_for('static',filename='pdf/reglamento.pdf',_external=true)}}">Reglamento</a></li>
+        <li class="enlaces__list-item"><a href="{{url_for('registration',_external=true)}}">Inscripción</a></li>
+    </ul>
+</div>
 {% endblock %}
