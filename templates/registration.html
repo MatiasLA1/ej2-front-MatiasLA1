@@ -5,7 +5,7 @@
 {% block body %}
 <h1 class="registration__title">Formulario de Inscripción</h1>
 <section class="registration">
-    <form action="" class="registration__form">
+    <form action="{{ url_for('registration') }}" method="POST" class="registration__form">
         <!-- DATOS PERSONALES -->
         <label class="form__item" for="name">Nombre:</label>
         <input class="form__input" type="text" id="firstname" name="fname" placeholder="John">
@@ -17,7 +17,7 @@
         <input class="form__input" type="email" name="email" id="email" placeholder="ejemplo@ejemplo.com">
 
         <label class="form__item" for="telefono">Teléfono / Celular:</label>
-        <input class="form__input" type="tel" name="telefono" id="telefono" placeholder="+54 9 11 1234 5678">
+        <input class="form__input" type="tel" name="telefono" id="telefono" placeholder="+54 11 1234 5678">
 
         <label class="form__item" for="ciudad">Ciudad / Provincia:</label>
         <input class="form__input" type="text" name="ciudad" id="ciudad" placeholder="Buenos Aires">
@@ -32,7 +32,7 @@
         </select>
 
         <label class="form__item" for="telefono">Número de emergencia:</label>
-        <input class="form__input" type="tel" name="telefono_emergencia" id="telefono_emergencia" placeholder="+54 9 11 9876 5432">
+        <input class="form__input" type="tel" name="telefono_emergencia" id="telefono_emergencia" placeholder="+54 11 9876 5432">
 
         <button class="form__button" type="submit">Enviar inscripción ➡</button>
     </form>

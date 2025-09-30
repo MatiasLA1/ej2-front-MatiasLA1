@@ -1,7 +1,14 @@
-from flask import Flask, render_template, url_for
+import os
+from flask import Flask, render_template, request, redirect, flash, url_for
 from flask_mail import Mail, Message
+from dotenv import load_dotenv
+
+
+# Cargar variables de entorno del archivo .env
+load_dotenv()
 
 app = Flask(__name__)
+app.secret_key = "supersecretkey"  # necesario para flash()/
 
 info_evento = {
     1: { "nombre": "Rally MTB 2025",
@@ -17,6 +24,18 @@ info_evento = {
     "Auspiciantes": ["Powerade","Specialized"]
     }
 }
+
+
+# # Configuración del servidor de correo
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = os.getenv("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.getenv("MAIL_PASSWORD")
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv("MAIL_USERNAME")
+
+mail = Mail(app)
 
 @app.route('/')
 def index():
@@ -34,8 +53,48 @@ def index():
 def base():
     return render_template('base.html',organizador=info_evento[1]["organizador"],nombre_evento=info_evento[1]["nombre"])
 
-@app.route('/registration')
+@app.route('/registration', methods=["GET", "POST"])
 def registration():
+    if request.method == "POST":
+            nombre = request.form.get("fname")
+            apellido = request.form.get("lname")
+            email_user = request.form.get("email")
+            modalidad = request.form.get("modalidad_carrera")
+
+            try:
+                # Mail al participante
+                msg_user = Message(
+                    subject="Confirmación de inscripción - Rally MTB Tandil 2025",
+                    recipients=[email_user]
+                )
+                msg_user.body = f"""
+                Hola {nombre} {apellido}, gracias por inscribirte al Rally MTB Tandil 2025.
+                Tu inscripción en la categoría {modalidad} ha sido recibida con éxito.
+                Nos pondremos en contacto contigo con más detalles próximamente.
+                ¡Nos vemos en la carrera!
+                Equipo de Organización
+                """
+                mail.send(msg_user)
+
+                # Mail al organizador
+                msg_org = Message(
+                    subject=f"Nueva inscripción: {nombre} {apellido}",
+                    recipients=["mlaguilar@fi.uba.ar"]  #acá el mail de la organización
+                )
+                msg_org.body = f"""
+                Nueva inscripción recibida:
+
+                Nombre: {nombre} {apellido}
+                Email: {email_user}
+                Categoría: {modalidad}
+                """
+                mail.send(msg_org)
+
+                flash("Inscripción enviada y confirmación enviada por correo.", "success")
+            except Exception as e:
+                flash(f"Ocurrió un error al enviar los correos: {e}", "danger")
+            return redirect(url_for("registration"))
+    
     return render_template('registration.html',
     organizador=info_evento[1]["organizador"],nombre_evento=info_evento[1]["nombre"])
 
