@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/style.css', _external=True)}}">
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo-container">
+            <a href="{{url_for('index',_external=true)}}">
+                <img class="header__logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Logo">
+            </a>
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="{{url_for('index')}}">Inicio</a></li>
+                <li class="header__nav-item"><a href="">Informacion</a></li>
+                <li class="header__nav-item"><a href="">Recorrido</a></li>
+                <li class="header__nav-item"><a href="#auspiciantes">Auspiciantes</a></li>
+                <li class="header__nav-item"><a href="#contacto">Contacto</a>
+                <li class="header__nav-item header__nav-item--registration ">
+                <a href="{{url_for('registration')}}">Inscripción</a></li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="flash {{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+    {% endwith %} -->
+    {% block body %} 
+    {% endblock %}
+    <footer class="footer" id="contacto">
+        <div class="footer__container">
+            <div class="footer__info">
+                <p class="footer__info-paragraph">© 2025 {{ organizador }}</p>
+                <p class="footer__info-paragraph">Organizador del {{ nombre_evento }}</p>
+                <p class="footer__info-contact">WhatsApp: <a href="https://wa.me/5491112345678">+54 9 11 1234 5678</a></p>
+                <p class="footer__info-contact">Email: <a href="mailto:clubunidos@gmail.com">clubunidos@gmail.com</a></p>
+            </div>
+            <div class="footer__logo-container">
+                <img class="header__logo" src="{{url_for('static', filename='images/logo.png')}}" alt="Logo">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

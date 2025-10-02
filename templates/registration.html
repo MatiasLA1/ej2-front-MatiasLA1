@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Inscripción - Rally MTB Tandil 2025{% endblock %}
+
+{% block body %}
+<h1 class="registration__title">Formulario de Inscripción</h1>
+<section class="registration">
+    <p class="registration__intro">
+        Completá tus datos en el siguiente formulario para asegurar tu lugar en el Rally MTB Tandil 2025
+        Los cupos son limitados y se asignan por orden de inscripción, ¡no te quedes afuera!
+    </p>
+    <div class="registration__container">
+        <div class="form__container">
+            <form action="{{ url_for('registration') }}" method="POST" class="registration__form">
+                <!-- DATOS PERSONALES -->
+                <label class="form__item" for="name">Nombre:</label>
+                <input class="form__input" type="text" id="firstname" name="fname" placeholder="John">
+        
+                <label class="form__item" for="lastname">Apellido:</label>
+                <input class="form__input" type="text" id="lastname" name="lname" placeholder="Doe">
+                <!-- DATOS DE CONTACTO -->
+                <label class="form__item" for="email">Email:</label>
+                <input class="form__input" type="email" name="email" id="email" placeholder="ejemplo@ejemplo.com">
+        
+                <label class="form__item" for="telefono">Teléfono / Celular:</label>
+                <input class="form__input" type="tel" name="telefono" id="telefono" placeholder="+54 11 1234 5678">
+        
+                <label class="form__item" for="ciudad">Ciudad / Provincia:</label>
+                <input class="form__input" type="text" name="ciudad" id="ciudad" placeholder="Buenos Aires">
+        
+                <!-- INFORMACION DE LA CARRERA -->
+        
+                <label class="form__item">Modalidad de la carrera:
+                </label>
+                <select class="form__input" name="modalidad_carrera" id="modalidad_carrera">
+                    <option value="corta">Corta</option>
+                    <option value="larga">Larga</option>
+                </select>
+        
+                <label class="form__item" for="telefono">Número de emergencia:</label>
+                <input class="form__input" type="tel" name="telefono_emergencia" id="telefono_emergencia" placeholder="+54 11 9876 5432">
+        
+                <button class="form__button" type="submit">Enviar inscripción ➡</button>
+            </form>
+        </div>
+        <div class="foto_cupos-container">
+            <img class="foto_cupos" 
+            src="{{url_for('static',filename='images/imagen_50_cupos.jpg')}}" alt="Foto del evento sobre que queda 50 cupos">
+        </div>
+    </div>
+    <p class="registration__note">
+            Una vez enviada tu inscripción, recibirás un correo de confirmación con los detalles de tu participación.
+    </p>
+</section>
+
+
+<div class="fotos_evento-container">
+    <div class="fotos_evento-container_width">
+        <h2 class="fotos_evento-title">Fotos del evento</h2>
+        <div class="fotos_evento-images">
+            <img class="fotos_evento" src="{{ url_for('static', filename='images/foto_evento_1.jpeg') }}" alt="">
+            <img class="fotos_evento fotos_evento-2" src="{{ url_for('static', filename='images/foto_evento_2.jpg') }}" alt="">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
